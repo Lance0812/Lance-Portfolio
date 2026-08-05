@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+
 {% block title %}
 Testimonials
 {% endblock %}
@@ -7,16 +8,17 @@ Testimonials
 
 {% block content %}
 
-<h1>Testimonials</h1>
 
-
-<div class="cards">
+<h1>
+Testimonials
+</h1>
 
 
 {% for testimony in testimonies %}
 
 
 <div class="card">
+
 
 <h2>
 {{ testimony.full_name }}
@@ -38,13 +40,12 @@ View Details
 
 {% empty %}
 
-<p>No testimonials yet.</p>
+<p>
+No testimonials available.
+</p>
 
 
 {% endfor %}
-
-
-</div>
 
 
 {% endblock %}

@@ -1,32 +1,32 @@
 {% extends 'base.html' %}
 
+
 {% block title %}
-Testimony
+Leave Testimony
 {% endblock %}
 
 
 {% block content %}
 
-<div class="form-container">
 
-<h1>Leave Your Testimony</h1>
+<h1>
+Leave Your Testimony
+</h1>
 
 
 <form method="POST">
 
-{% csrf_token %}
+    {% csrf_token %}
 
-{{ form.as_p }}
+    {{ form.as_p }}
 
 
-<button type="submit">
-Submit Testimony
-</button>
+    <button type="submit">
+        Submit
+    </button>
 
 
 </form>
-
-</div>
 
 
 {% endblock %}
