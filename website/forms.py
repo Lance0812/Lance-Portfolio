@@ -3,6 +3,7 @@ from .models import Project, Inquiry, Testimony
 
 
 class ProjectForm(forms.ModelForm):
+
     class Meta:
         model = Project
         fields = [
@@ -13,9 +14,12 @@ class ProjectForm(forms.ModelForm):
         ]
 
 
+
 class InquiryForm(forms.ModelForm):
+
     class Meta:
         model = Inquiry
+
         fields = [
             'first_name',
             'last_name',
@@ -26,9 +30,12 @@ class InquiryForm(forms.ModelForm):
         ]
 
 
+
 class TestimonyForm(forms.ModelForm):
+
     class Meta:
         model = Testimony
+
         fields = [
             'full_name',
             'content'
