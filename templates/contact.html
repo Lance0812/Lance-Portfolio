@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="contact">
+
+    <h1>Contact</h1>
+
+    <div class="contact-card">
+
+        <p><strong>Phone:</strong> {{ personal_info.contact_number }}</p>
+
+        <p><strong>Email:</strong> {{ personal_info.email }}</p>
+
+        <p><strong>Address:</strong> {{ personal_info.address }}</p>
+
+    </div>
+
+</section>
+
+{% endblock %}

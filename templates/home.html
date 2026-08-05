@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Home
+{% endblock %}
+
+
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <h1>
+            Hi, I'm Lance
+        </h1>
+
+
+        <h2>
+            Computer Engineering Student
+        </h2>
+
+
+        <p>
+            I am a Second Year Computer Engineering student passionate about technology, programming, and continuous learning. I enjoy solving problems, developing new skills, and building projects that strengthen my knowledge and experience. 
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a href="{% url 'projects' %}" class="btn">
+                View Projects
+            </a>
+
+
+            <a href="{% url 'contact' %}" class="btn-outline">
+                Contact Me
+            </a>
+
+        </div>
+
+
+        <div class="social-icons">
+
+            <a href="https://github.com/yourusername">
+                GitHub
+            </a>
+
+
+            <a href="https://linkedin.com/in/yourusername">
+                LinkedIn
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+{% endblock %}
