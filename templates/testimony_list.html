@@ -8,16 +8,20 @@ Testimonials
 
 {% block content %}
 
+<section class="page-section">
 
 <h1>
-Testimonials
+Client Testimonials
 </h1>
+
+
+<div class="card-container">
 
 
 {% for testimony in testimonies %}
 
 
-<div class="card">
+<div class="testimonial-card">
 
 
 <h2>
@@ -31,7 +35,7 @@ Testimonials
 
 
 <a href="{% url 'testimony_detail' testimony.id %}">
-View Details
+Read More
 </a>
 
 
@@ -41,11 +45,17 @@ View Details
 {% empty %}
 
 <p>
-No testimonials available.
+No testimonials yet.
 </p>
 
 
 {% endfor %}
+
+
+</div>
+
+
+</section>
 
 
 {% endblock %}

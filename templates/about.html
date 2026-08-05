@@ -4,38 +4,66 @@
 About
 {% endblock %}
 
+
 {% block content %}
 
-<h1>About Me</h1>
+<section class="about-section">
 
-{% if personal_info %}
+    <h1>
+        About Me
+    </h1>
 
-<h2>
-{{ personal_info.first_name }}
-{{ personal_info.middle_name }}
-{{ personal_info.last_name }}
-</h2>
 
-<p>
-{{ personal_info.summary }}
-</p>
+    {% if personal_info %}
 
-<p>
-Address: {{ personal_info.address }}
-</p>
+    <div class="about-container">
 
-<p>
-Email: {{ personal_info.email }}
-</p>
 
-<p>
-Contact: {{ personal_info.contact_number }}
-</p>
+        <h2>
+            {{ personal_info.first_name }}
+            {{ personal_info.middle_name }}
+            {{ personal_info.last_name }}
+        </h2>
 
-{% else %}
 
-<p>No personal information added yet.</p>
+        <p>
+            {{ personal_info.summary }}
+        </p>
 
-{% endif %}
+
+        <div class="about-info">
+
+            <p>
+                Address: {{ personal_info.address }}
+            </p>
+
+
+            <p>
+                Email: {{ personal_info.email }}
+            </p>
+
+
+            <p>
+                Contact: {{ personal_info.contact_number }}
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    {% else %}
+
+    <p>
+        No personal information added yet.
+    </p>
+
+
+    {% endif %}
+
+
+</section>
+
 
 {% endblock %}

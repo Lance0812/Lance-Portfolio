@@ -257,9 +257,6 @@ section {
     transform: translateY(-10px);
 
 }
-/* Mobile Responsive */
-
-@media (max-width: 768px) {
 
     .hero {
 
@@ -282,11 +279,11 @@ section {
 
 
     .nav-links {
-        flex-direction: column;
-        text-align: center;
-        margin-top: 20px;
-        gap: 15px;
-    }
+    flex-direction: row;
+    text-align: center;
+    margin-top: 0;
+    gap: 25px;
+}
 
 
     .hero h1 {
@@ -297,13 +294,6 @@ section {
     section {
         padding: 40px 5%;
     }
-
-
-    .projects-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
 
     .project-card {
         width: 90%;
@@ -320,7 +310,6 @@ section {
         width: 90%;
     }
 
-}
 footer {
 
     text-align: center;
@@ -723,5 +712,139 @@ footer {
 .form-container button:hover {
 
     opacity: 0.8;
+
+}
+.projects-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 30px !important;
+    width: 100% !important;
+}
+
+
+.projects-grid .project-card {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+}
+/* HEADER HORIZONTAL FIX */
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+
+.nav-links {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 25px;
+}
+
+
+.nav-links a {
+    white-space: nowrap;
+}
+html, body {
+    min-height: 100%;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+main {
+    flex: 1;
+}
+
+
+footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 30px;
+    background: #111;
+    color: white;
+}
+
+.about-section {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+
+.about-section h1 {
+    margin-bottom: 30px;
+}
+
+
+.about-section p {
+    margin-bottom: 25px;
+    line-height: 1.8;
+}
+.about-section {
+
+    min-height: 80vh;
+
+    padding: 100px 10%;
+
+    text-align: center;
+
+}
+
+
+.about-section h1 {
+
+    font-size: 50px;
+
+    margin-bottom: 40px;
+
+}
+
+
+.about-container {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    background: #1e293b;
+
+    padding: 40px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+
+}
+
+
+.about-container h2 {
+
+    margin-bottom: 25px;
+
+    color: #00adb5;
+
+}
+
+
+.about-container p {
+
+    line-height: 1.8;
+
+    margin-bottom: 20px;
+
+}
+
+
+.about-info {
+
+    margin-top: 30px;
 
 }
