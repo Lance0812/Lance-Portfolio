@@ -556,20 +556,49 @@ footer {
 }
 .form-container {
 
-    background: white;
     width: 500px;
     margin: 40px auto;
     padding: 30px;
+    background: white;
     border-radius: 10px;
 
 }
 
 
-.cards {
+form {
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+
+}
+
+
+form input,
+form textarea,
+form select {
+
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+
+}
+
+
+button {
+
+    padding: 12px 25px;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+
+}
+
+
+button:hover {
+
+    opacity: 0.8;
 
 }
 
@@ -577,9 +606,8 @@ footer {
 .card {
 
     background: white;
-    width: 300px;
+    padding: 25px;
     margin: 20px;
-    padding: 20px;
     border-radius: 10px;
 
 }
@@ -592,8 +620,9 @@ footer {
 }
 
 
-.form-container h1 {
+footer {
 
     text-align: center;
+    padding: 20px;
 
 }
