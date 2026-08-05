@@ -8,10 +8,14 @@ Add Project
 
 {% block content %}
 
-<h1>Add New Project</h1>
+<section class="form-page">
+
+<h1>
+Add New Project
+</h1>
 
 
-<form method="POST">
+<form method="POST" class="form-container">
 
     {% csrf_token %}
 
@@ -23,5 +27,7 @@ Add Project
 
 </form>
 
+
+</section>
 
 {% endblock %}
