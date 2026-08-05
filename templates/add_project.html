@@ -1,15 +1,8 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Contact
-{% endblock %}
-
-
 {% block content %}
 
-<div class="form-container">
-
-<h1>Contact Me</h1>
+<h1>Add New Project</h1>
 
 <form method="POST">
 
@@ -18,11 +11,9 @@ Contact
 {{ form.as_p }}
 
 <button type="submit">
-Send Message
+Save Project
 </button>
 
 </form>
-
-</div>
 
 {% endblock %}

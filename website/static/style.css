@@ -554,3 +554,46 @@ footer {
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 
 }
+.form-container {
+
+    background: white;
+    width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 10px;
+
+}
+
+
+.cards {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+
+.card {
+
+    background: white;
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+
+
+.card a {
+
+    text-decoration: none;
+
+}
+
+
+.form-container h1 {
+
+    text-align: center;
+
+}

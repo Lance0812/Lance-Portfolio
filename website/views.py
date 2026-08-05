@@ -1,108 +1,129 @@
-from django.shortcuts import render
-from .models import Project, PersonalInformation
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import ListView
+
+from .models import Project, PersonalInformation, Testimony
+from .forms import ProjectForm, InquiryForm, TestimonyForm
+
+
 
 def home(request):
-    return render(request, "home.html")
+    return render(request, 'home.html')
+
 
 
 def about(request):
-    return render(request, "about.html")
+    personal_info = PersonalInformation.objects.first()
 
+    return render(request, 'about.html',{
+        'personal_info': personal_info
+    })
 
-from .models import Project
 
 
 def projects(request):
-
     projects = Project.objects.all()
 
-    return render(
-        request,
-        "projects.html",
-        {
-            "projects": projects
-        }
-    )
+    return render(request,'projects.html',{
+        'projects':projects
+    })
 
-from django.shortcuts import render
 
-def contact(request):
 
-    personal_info = PersonalInformation.objects.first()
+def project_detail(request,id):
 
-    return render(
-        request,
-        "contact.html",
-        {
-            "personal_info": personal_info
-        }
-    )
+    project = get_object_or_404(Project,id=id)
 
+    return render(request,'project_detail.html',{
+        'project':project
+    })
+
+
+
+def add_project(request):
 
     if request.method == "POST":
 
-        ContactMessage.objects.create(
-            name=request.POST.get("name"),
-            email=request.POST.get("email"),
-            message=request.POST.get("message")
-        )
+        form = ProjectForm(request.POST)
+
+        if form.is_valid():
+
+            form.save()
+
+            return redirect('projects')
+
+    else:
+
+        form = ProjectForm()
 
 
-    return render(
-        request,
-        "contact.html",
-        {
-            "personal_info": personal_info
-        }
-    )
-
-def project_detail(request, id):
-
-    project = Project.objects.get(id=id)
-
-    return render(
-        request,
-        "project_detail.html",
-        {
-            "project": project
-        }
-    )
-    projects = [
-        {
-            "id": 1,
-            "title": "Personal Portfolio Website",
-            "description": "A responsive portfolio website created using Django.",
-            "tech": "HTML, CSS, JavaScript, Django",
-            "github": "https://github.com/yourusername"
-        },
-
-        {
-            "id": 2,
-            "title": "Student Grade Calculator",
-            "description": "A program that calculates student grades.",
-            "tech": "C++, Object-Oriented Programming",
-            "github": "https://github.com/yourusername"
-        },
-
-        {
-            "id": 3,
-            "title": "Smart Temperature Monitor",
-            "description": "An IoT project that monitors temperature.",
-            "tech": "Arduino C++, Sensors",
-            "github": "https://github.com/yourusername"
-        }
-    ]
+    return render(request,'add_project.html',{
+        'form':form
+    })
 
 
-    project = None
 
-    for item in projects:
-        if item["id"] == id:
-            project = item
+def contact(request):
+
+    if request.method == "POST":
+
+        form = InquiryForm(request.POST)
+
+        if form.is_valid():
+
+            form.save()
+
+            return render(request,'contact_success.html')
+
+    else:
+
+        form = InquiryForm()
 
 
-    return render(
-        request,
-        "project_detail.html",
-        {"project": project}
-    )
+    return render(request,'contact.html',{
+        'form':form
+    })
+
+
+
+def add_testimony(request):
+
+    if request.method == "POST":
+
+        form = TestimonyForm(request.POST)
+
+        if form.is_valid():
+
+            form.save()
+
+            return redirect('testimony_list')
+
+
+    else:
+
+        form = TestimonyForm()
+
+
+    return render(request,'testimony.html',{
+        'form':form
+    })
+
+
+
+class TestimonyListView(ListView):
+
+    model = Testimony
+
+    template_name = "testimony_list.html"
+
+    context_object_name = "testimonies"
+
+
+
+def testimony_detail(request,id):
+
+    testimony = get_object_or_404(Testimony,id=id)
+
+
+    return render(request,'testimony_detail.html',{
+        'testimony':testimony
+    })
