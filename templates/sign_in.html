@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Sign In
+{% endblock %}
+
+{% block content %}
+
+<section class="form-page">
+
+    <h1>Admin Sign In</h1>
+
+    <form method="POST" class="form-container">
+
+        {% csrf_token %}
+
+        {% if error %}
+            <p class="error-message">
+                {{ error }}
+            </p>
+        {% endif %}
+
+        <label for="username">
+            Username
+        </label>
+
+        <input
+            type="text"
+            id="username"
+            name="username"
+            required
+        >
+
+        <label for="password">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="password"
+            name="password"
+            required
+        >
+
+        <button type="submit">
+            Sign In
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}
