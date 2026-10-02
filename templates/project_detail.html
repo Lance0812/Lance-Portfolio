@@ -1,55 +1,51 @@
 {% extends 'base.html' %}
 
-
 {% block title %}
-{{ project.title }}
+{{ project.project_name }}
 {% endblock %}
-
-
 
 {% block content %}
 
-<section>
+<section class="project-detail">
 
+    <h1>
+        {{ project.project_name }}
+    </h1>
 
-{% if project.image %}
+    <p>
+        {{ project.description }}
+    </p>
 
-<img src="{{ project.image.url }}"
-     alt="{{ project.title }}"
-     class="project-detail-img">
+    <p>
+        <strong>Tech Stack:</strong>
 
-{% endif %}
+        {% for tech in project.tech_stacks.all %}
 
+            {{ tech.name }}{% if not forloop.last %}, {% endif %}
 
+        {% empty %}
 
-<h1>
-{{ project.title }}
-</h1>
+            None
 
+        {% endfor %}
 
+    </p>
 
-<p>
-{{ project.description }}
-</p>
+    {% if project.link %}
 
+        <p>
+            <strong>Project Link:</strong>
 
+            <a href="{{ project.link }}" target="_blank">
+                Visit Project
+            </a>
+        </p>
 
-<h3>
-Tech Stack
-</h3>
+    {% endif %}
 
-
-<p>
-{{ project.tech_stack }}
-</p>
-
-
-
-<a href="{{ project.github_url }}"
-class="btn">
-View GitHub
-</a>
-
+    <a href="{% url 'projects' %}">
+        Back to Projects
+    </a>
 
 </section>
 

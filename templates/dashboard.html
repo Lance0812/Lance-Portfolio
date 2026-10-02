@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="admin-dashboard">
+
+    <h1>Admin Dashboard</h1>
+    <p class="dashboard-welcome">
+        Welcome, {{ request.user.username }}
+    </p>
+
+    <div class="dashboard-card">
+
+        <div class="card-top">
+            <div>
+                <h2>Projects</h2>
+                <p>All projects in your portfolio</p>
+            </div>
+
+            <a href="{% url 'create_project' %}" class="create-button">
+                Create Project
+            </a>
+        </div>
+
+        <div class="table-wrapper">
+
+            <table class="admin-table">
+
+                <thead>
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Description</th>
+                        <th>Tech Stack</th>
+                        <th>Link</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for project in projects %}
+
+                    <tr>
+                        <td>{{ project.project_name }}</td>
+
+                        <td>
+                            {{ project.description|truncatechars:50 }}
+                        </td>
+
+                        <td>
+                            {% for tech in project.tech_stacks.all %}
+                                {{ tech.name }}{% if not forloop.last %}, {% endif %}
+                            {% empty %}
+                                None
+                            {% endfor %}
+                        </td>
+
+                        <td>
+                            {% if project.link %}
+                                <a href="{{ project.link }}" target="_blank">
+                                    View
+                                </a>
+                            {% else %}
+                                None
+                            {% endif %}
+                        </td>
+
+                        <td>
+    <a href="{% url 'edit_project' project.id %}">
+        Edit
+    </a>
+</td>
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+                        <td colspan="4" class="no-data">
+                            No projects available.
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <div class="card-top">
+
+            <div>
+                <h2>Tech Stacks</h2>
+                <p>Technologies used in your projects</p>
+            </div>
+
+            <a href="{% url 'create_tech_stack' %}" class="create-button">
+                Create Tech Stack
+            </a>
+
+        </div>
+
+        <div class="table-wrapper">
+
+            <table class="admin-table">
+
+                <thead>
+                    <tr>
+                        <th>Tech Stack Name</th>
+                        <th>Project It Was Used</th>
+                        <th>Date Added</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for tech in tech_stacks %}
+
+                    <tr>
+
+                        <td>{{ tech.name }}</td>
+
+                        <td>
+                            {% for project in tech.projects.all %}
+                                {{ project.project_name }}{% if not forloop.last %}, {% endif %}
+                            {% empty %}
+                                None
+                            {% endfor %}
+                        </td>
+
+                        <td>
+                            {{ tech.created_at|date:"F d, Y" }}
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+                        <td colspan="3" class="no-data">
+                            No tech stacks available.
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

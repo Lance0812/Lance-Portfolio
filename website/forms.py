@@ -1,20 +1,37 @@
 from django import forms
-from .models import Project, Inquiry, Testimony
+from .models import Project, Inquiry, Testimony, TechStack
 
 
 class ProjectForm(forms.ModelForm):
 
     class Meta:
         model = Project
+
         fields = [
             'project_name',
             'description',
-            'tech_stack',
+            'tech_stacks',
             'link'
         ]
 
+        widgets = {
+            'description': forms.Textarea(
+                attrs={
+                    'rows': 5
+                }
+            ),
+            'tech_stacks': forms.CheckboxSelectMultiple()
+        }
 
 
+class TechStackForm(forms.ModelForm):
+
+    class Meta:
+        model = TechStack
+
+        fields = [
+            'name'
+        ]
 class InquiryForm(forms.ModelForm):
 
     class Meta:
@@ -28,7 +45,6 @@ class InquiryForm(forms.ModelForm):
             'address',
             'message'
         ]
-
 
 
 class TestimonyForm(forms.ModelForm):

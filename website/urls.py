@@ -4,11 +4,59 @@ from . import views
 
 urlpatterns = [
 
-    path('', views.home, name='home'),
+    path(
+        'sign-in/',
+        views.sign_in,
+        name='sign_in'
+    ),
 
-    path('about/', views.about, name='about'),
+    path(
+        'sign-out/',
+        views.sign_out,
+        name='sign_out'
+    ),
 
-    path('projects/', views.projects, name='projects'),
+    path(
+        'dashboard/',
+        views.dashboard,
+        name='dashboard'
+    ),
+
+    path(
+        'dashboard/projects/create/',
+        views.create_project,
+        name='create_project'
+    ),
+
+    path(
+    'dashboard/projects/<int:id>/edit/',
+    views.edit_project,
+    name='edit_project'
+),
+
+    path(
+        'dashboard/tech-stacks/create/',
+        views.create_tech_stack,
+        name='create_tech_stack'
+    ),
+
+    path(
+        '',
+        views.home,
+        name='home'
+    ),
+
+    path(
+        'about/',
+        views.about,
+        name='about'
+    ),
+
+    path(
+        'projects/',
+        views.projects,
+        name='projects'
+    ),
 
     path(
         'projects/<int:id>/',

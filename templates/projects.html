@@ -4,57 +4,64 @@
 Projects
 {% endblock %}
 
-
 {% block content %}
 
-<section class="projects-section">
+<section class="projects-page">
 
-    <div class="projects-container">
+    <h1>My Projects</h1>
 
-        <h1>
-            My Projects
-        </h1>
+    <div class="project-container">
 
+        {% for project in projects %}
 
-        <div class="projects-grid">
+        <div class="project-card">
 
-            {% for project in projects %}
+            <h2>
+                {{ project.project_name }}
+            </h2>
 
-            <div class="project-card">
+            <p>
+                {{ project.description }}
+            </p>
 
-                <h2>
-                    {{ project.project_name }}
-                </h2>
+            <p>
+                <strong>Tech Stack:</strong>
 
+                {% for tech in project.tech_stacks.all %}
 
-                <p>
-                    {{ project.description }}
-                </p>
+                    {{ tech.name }}{% if not forloop.last %}, {% endif %}
 
+                {% empty %}
 
-                <p>
-                    <strong>Technology:</strong>
-                    {{ project.tech_stack }}
-                </p>
+                    None
 
+                {% endfor %}
 
-                <a href="{% url 'project_detail' project.id %}">
+            </p>
+
+            {% if project.link %}
+
+                <a href="{{ project.link }}" target="_blank">
                     View Project
                 </a>
 
-            </div>
+            {% endif %}
 
+            <br><br>
 
-            {% empty %}
-
-            <p>
-                No projects available.
-            </p>
-
-
-            {% endfor %}
+            <a href="{% url 'project_detail' project.id %}">
+                View Details
+            </a>
 
         </div>
+
+        {% empty %}
+
+        <p>
+            No projects available.
+        </p>
+
+        {% endfor %}
 
     </div>
 
