@@ -27,7 +27,9 @@ load_dotenv(BASE_DIR / '.env')
 SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '.pythonanywhere.com',
+]
 
 
 # Application definition
@@ -120,11 +122,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_URL = 'static/'
+
 STATICFILES_DIRS = [
     BASE_DIR / "website/static",
-]
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
 ]
 MEDIA_URL = '/media/'
 
