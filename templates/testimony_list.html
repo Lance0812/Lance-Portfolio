@@ -1,61 +1,45 @@
 {% extends 'base.html' %}
 
-
 {% block title %}
 Testimonials
 {% endblock %}
 
-
 {% block content %}
 
-<section class="page-section">
+<section class="projects-page">
 
-<h1>
-Client Testimonials
-</h1>
+    <h1>Client Testimonials</h1>
 
+    <div class="project-container">
 
-<div class="card-container">
+        {% for testimony in testimonies %}
 
+        <div class="project-card">
 
-{% for testimony in testimonies %}
+            <h2>
+                {{ testimony.full_name }}
+            </h2>
 
+            <p>
+                {{ testimony.content }}
+            </p>
 
-<div class="testimonial-card">
+            <a href="{% url 'testimony_detail' testimony.id %}">
+                Read More
+            </a>
 
+        </div>
 
-<h2>
-{{ testimony.full_name }}
-</h2>
+        {% empty %}
 
+        <p>
+            No testimonials yet.
+        </p>
 
-<p>
-{{ testimony.content }}
-</p>
+        {% endfor %}
 
-
-<a href="{% url 'testimony_detail' testimony.id %}">
-Read More
-</a>
-
-
-</div>
-
-
-{% empty %}
-
-<p>
-No testimonials yet.
-</p>
-
-
-{% endfor %}
-
-
-</div>
-
+    </div>
 
 </section>
-
 
 {% endblock %}
