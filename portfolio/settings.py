@@ -28,6 +28,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
     '.pythonanywhere.com',
 ]
 
