@@ -1,38 +1,25 @@
 {% extends 'base.html' %}
 
-
 {% block title %}
-Testimony Detail
+{{ testimony.full_name }}
 {% endblock %}
-
 
 {% block content %}
 
-<section class="page-section">
+<section class="project-detail">
 
+    <h1>
+        {{ testimony.full_name }}
+    </h1>
 
-<div class="detail-card">
+    <p>
+        {{ testimony.content }}
+    </p>
 
-
-<h1>
-{{ testimony.full_name }}
-</h1>
-
-
-<p>
-{{ testimony.content }}
-</p>
-
-
-<a href="{% url 'testimony_list' %}">
-Back to Testimonials
-</a>
-
-
-</div>
-
+    <a href="{% url 'testimony_list' %}">
+        Back to Testimonials
+    </a>
 
 </section>
-
 
 {% endblock %}
